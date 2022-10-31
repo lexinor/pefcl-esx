@@ -1,9 +1,3 @@
-ESX = nil
-
-TriggerEvent('esx:getSharedObject', function(obj)
-    ESX = obj
-end)
-
 math.randomseed(os.time())
 local charset = {}
 
@@ -48,11 +42,11 @@ local function syncBankBalance(account)
     TriggerEvent('esx_society:getSociety', account.ownerIdentifier, function(_society)
         society = _society
     end)
-
     if society ~= nil then
         TriggerEvent('esx_addonaccount:getSharedAccount', society.account, function(societyAccount)
-            -- TODO: Fix this asap
-            -- societyAccount.setMoney(account.balance)
+            if societyAccount then
+                societyAccount.setMoney(account.balance)
+            end       
         end)
     end
 
