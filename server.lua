@@ -306,7 +306,7 @@ end)
 
 AddEventHandler('esx_addonaccount:setMoney', function(identifier, amount)
     if string.find(identifier, "society_") then
-        exports.pefcl:setMoneyByIdentifier(0, {
+        exports.pefcl:SetBankBalanceByIdentifier(0, {
             amount = amount,
             identifier = string.gsub(identifier, "society_", "")
         })
